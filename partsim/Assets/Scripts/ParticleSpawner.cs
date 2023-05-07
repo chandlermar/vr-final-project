@@ -3,14 +3,12 @@ using UnityEngine;
 public class ParticleSpawner : MonoBehaviour
 {
 
-    public GameObject particlePrefab;
+    public GameObject redParticlePrefab;
+    public GameObject greenParticlePrefab;
     public Transform spawnPoint;
     public int numParticles = 10;
     public float spawnRadius = 1f;
     public float scanRadius = 2f;
-    public float cohesionWeight = 1f;
-    public float separationWeight = 1f;
-    public float alignmentWeight = 1f;
     public float speed = 1f;
     public float rotationSpeed = 1f;
     public float maxForce = 1f;
@@ -24,9 +22,18 @@ public class ParticleSpawner : MonoBehaviour
 
     void SpawnParticles()
     {
+        GameObject particlePrefab;
         particles = new GameObject[numParticles];
         for (int i = 0; i < numParticles; i++)
         {
+            if (Random.Range(0f, 1f) < 0.5f)
+            {
+                particlePrefab = redParticlePrefab;
+            }
+            else
+            {
+                particlePrefab = greenParticlePrefab;
+            }
             Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
             particles[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
         }
@@ -36,6 +43,7 @@ public class ParticleSpawner : MonoBehaviour
     {
         foreach (GameObject particle in particles)
         {
+            ParticleBehavior currentBehavior = particle.GetComponent<ParticleBehavior>();
             Rigidbody rb = particle.GetComponent<Rigidbody>();
             Vector3 cohesion = Vector3.zero;
             Vector3 separation = Vector3.zero;
@@ -64,7 +72,7 @@ public class ParticleSpawner : MonoBehaviour
                 separation = separation.normalized;
                 alignment = alignment.normalized;
 
-                Vector3 desiredVelocity = (cohesion * cohesionWeight + separation * separationWeight + alignment * alignmentWeight).normalized * speed;
+                Vector3 desiredVelocity = (cohesion * currentBehavior.cohesionWeight + separation * currentBehavior.separationWeight + alignment * currentBehavior.alignmentWeight).normalized * speed;
                 Vector3 steeringForce = Vector3.ClampMagnitude(desiredVelocity - rb.velocity, maxForce);
                 rb.AddForce(steeringForce, ForceMode.VelocityChange);
 
