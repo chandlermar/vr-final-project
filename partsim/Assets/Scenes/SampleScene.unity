@@ -1228,12 +1228,13 @@ MonoBehaviour:
   spawnPoint: {fileID: 2092835590}
   numParticles: 200
   spawnRadius: 5
-  scanRadius: 5
-  speed: 8
+  scanRadius: 2
+  speed: 10
   rotationSpeed: 2
   maxForce: 20
   greenRepelRed: 0
   redRepelGreen: 0
+  globalDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1728657555
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,28 +59,7 @@ public class ParticleSpawner : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(particle.transform.position, scanRadius);
             foreach (Collider col in colliders)
             {
-                if (greenRepelRed)
-                {
-                    if (col.gameObject != particle && col.gameObject.CompareTag("Red"))
-                    {
-                        count++;
-                        cohesion += col.transform.position;
-                        separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
-                        alignment += col.GetComponent<Rigidbody>().velocity;
-                    }
-                }
-                else if (redRepelGreen)
-                {
-                    if (col.gameObject != particle && col.gameObject.CompareTag("Green"))
-                    {
-                        count++;
-                        cohesion += col.transform.position;
-                        separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
-                        alignment += col.GetComponent<Rigidbody>().velocity;
-                    }
-                }
-                else
-                {
+                
                     if (col.gameObject != particle && col.gameObject.CompareTag("Red") || col.gameObject != particle && col.gameObject.CompareTag("Green"))
                     {
                         count++;
@@ -88,7 +67,7 @@ public class ParticleSpawner : MonoBehaviour
                         separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
                         alignment += col.GetComponent<Rigidbody>().velocity;
                     }
-                }
+                
                 
             }
 
