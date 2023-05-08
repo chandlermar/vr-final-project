@@ -12,8 +12,13 @@ public class ParticleSpawner : MonoBehaviour
     public float speed = 1f;
     public float rotationSpeed = 1f;
     public float maxForce = 1f;
+    public bool greenRepelRed;
+    public bool redRepelGreen;
 
     private GameObject[] particles;
+
+    // Global direction vector
+    public Vector3 globalDirection = new Vector3(0f, 0f, 1f);
 
     void Start()
     {
@@ -49,17 +54,42 @@ public class ParticleSpawner : MonoBehaviour
             Vector3 separation = Vector3.zero;
             Vector3 alignment = Vector3.zero;
             int count = 0;
+            int count2 = 0;
 
             Collider[] colliders = Physics.OverlapSphere(particle.transform.position, scanRadius);
             foreach (Collider col in colliders)
             {
-                if (col.gameObject != particle && col.gameObject.CompareTag("Particle"))
+                if (greenRepelRed)
                 {
-                    count++;
-                    cohesion += col.transform.position;
-                    separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
-                    alignment += col.GetComponent<Rigidbody>().velocity;
+                    if (col.gameObject != particle && col.gameObject.CompareTag("Red"))
+                    {
+                        count++;
+                        cohesion += col.transform.position;
+                        separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
+                        alignment += col.GetComponent<Rigidbody>().velocity;
+                    }
                 }
+                else if (redRepelGreen)
+                {
+                    if (col.gameObject != particle && col.gameObject.CompareTag("Green"))
+                    {
+                        count++;
+                        cohesion += col.transform.position;
+                        separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
+                        alignment += col.GetComponent<Rigidbody>().velocity;
+                    }
+                }
+                else
+                {
+                    if (col.gameObject != particle && col.gameObject.CompareTag("Red") || col.gameObject != particle && col.gameObject.CompareTag("Green"))
+                    {
+                        count++;
+                        cohesion += col.transform.position;
+                        separation += (particle.transform.position - col.transform.position).normalized / (particle.transform.position - col.transform.position).magnitude;
+                        alignment += col.GetComponent<Rigidbody>().velocity;
+                    }
+                }
+                
             }
 
             if (count > 0)
@@ -71,6 +101,11 @@ public class ParticleSpawner : MonoBehaviour
                 cohesion = (cohesion - particle.transform.position).normalized;
                 separation = separation.normalized;
                 alignment = alignment.normalized;
+
+                // Alignment with global direction
+                Vector3 desiredAlignment = globalDirection.normalized * speed;
+                Vector3 alignmentDiff = desiredAlignment - alignment;
+                alignment = alignment + alignmentDiff * currentBehavior.alignmentWeight;
 
                 Vector3 desiredVelocity = (cohesion * currentBehavior.cohesionWeight + separation * currentBehavior.separationWeight + alignment * currentBehavior.alignmentWeight).normalized * speed;
                 Vector3 steeringForce = Vector3.ClampMagnitude(desiredVelocity - rb.velocity, maxForce);

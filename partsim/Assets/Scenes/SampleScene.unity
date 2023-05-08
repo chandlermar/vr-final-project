@@ -1226,12 +1226,14 @@ MonoBehaviour:
   greenParticlePrefab: {fileID: 7625361801107436665, guid: c0fd6c0713927d84293557d404960377,
     type: 3}
   spawnPoint: {fileID: 2092835590}
-  numParticles: 150
+  numParticles: 200
   spawnRadius: 5
   scanRadius: 5
-  speed: 2
+  speed: 8
   rotationSpeed: 2
-  maxForce: 1
+  maxForce: 20
+  greenRepelRed: 0
+  redRepelGreen: 0
 --- !u!1 &1728657555
 GameObject:
   m_ObjectHideFlags: 0
