@@ -12,8 +12,6 @@ public class ParticleSpawner : MonoBehaviour
     public float speed = 1f;
     public float rotationSpeed = 1f;
     public float maxForce = 1f;
-    public bool greenRepelRed;
-    public bool redRepelGreen;
 
     private GameObject[] particles;
 
@@ -54,7 +52,6 @@ public class ParticleSpawner : MonoBehaviour
             Vector3 separation = Vector3.zero;
             Vector3 alignment = Vector3.zero;
             int count = 0;
-            int count2 = 0;
 
             Collider[] colliders = Physics.OverlapSphere(particle.transform.position, scanRadius);
             foreach (Collider col in colliders)
