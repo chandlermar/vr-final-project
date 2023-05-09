@@ -20,6 +20,20 @@ public class ParticleInteraction : MonoBehaviour
     public float maxForce = 1f;
 
 
+
+    public int redToRed = 0;
+    public int redToGreen = 0;
+    public int redToBlue = 0;
+
+    public int greenToRed = 0;
+    public int greenToGreen = 0;
+    public int greenToBlue = 0;
+
+    public int blueToRed = 0;
+    public int blueToGreen = 0;
+    public int blueToBlue = 0;
+
+
     private void Start()
     {
         SpawnParticles();
@@ -53,12 +67,41 @@ public class ParticleInteraction : MonoBehaviour
     }
     void Update()
     {
-        Rule(particlesRed, particlesGreen, 4); //green attracts red
-        //Rule(particlesGreen, particlesBlue, -2); //blue repels green
-        Rule(particlesBlue, particlesRed, 1); //red attracts blue
-        //Rule(particlesBlue, particlesGreen, 2); //green attracts blue
-        Rule(particlesGreen, particlesBlue, -12); //blue repels green
+        if (redToGreen != 0){
+            Rule(particlesRed, particlesGreen, redToGreen);
+        }
+        if (redToRed != 0){
+            Rule(particlesRed, particlesRed, redToRed);
+        }
+        if (redToBlue != 0){
+            Rule(particlesRed, particlesBlue, redToBlue);
+        }
 
+        if (greenToRed != 0){
+            Rule(particlesGreen, particlesRed, greenToRed);
+        }
+        if (greenToGreen != 0){
+            Rule(particlesGreen, particlesGreen, greenToGreen);
+        }
+        if (greenToBlue != 0){
+            Rule(particlesGreen, particlesBlue, greenToBlue);
+        }
+
+        if (blueToRed != 0){
+            
+            Rule(particlesBlue, particlesRed, blueToRed);
+        }
+        if (blueToGreen != 0){
+            Rule(particlesBlue, particlesGreen, blueToGreen);
+        }
+        if (blueToBlue != 0){
+            Rule(particlesBlue, particlesBlue, blueToBlue);
+        }
+        // Rule(particlesRed, particlesGreen, 4); //green attracts red
+        // //Rule(particlesGreen, particlesBlue, -2); //blue repels green
+        // Rule(particlesBlue, particlesRed, 1); //red attracts blue
+        // //Rule(particlesBlue, particlesGreen, 2); //green attracts blue
+        // Rule(particlesGreen, particlesBlue, -12); //blue repels green
     }
 
     void Rule(GameObject[] particles1, GameObject[] particles2, float g)
@@ -71,7 +114,7 @@ public class ParticleInteraction : MonoBehaviour
                 Vector3 a = particle1.transform.position;
                 Vector3 b = particle2.transform.position;
                 float d = Vector3.Distance(a, b);
-                if (d > 0.4f && d < 4f)
+                if (d > 0.4f && d < 6f)
                 {
                     Vector3 forceDirection = (b - a).normalized;
                     float F = g / d;
