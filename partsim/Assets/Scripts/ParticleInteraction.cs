@@ -53,11 +53,11 @@ public class ParticleInteraction : MonoBehaviour
     }
     void Update()
     {
-        //Rule(particlesRed, particlesGreen, 2); //green attracts red
+        Rule(particlesRed, particlesGreen, 4); //green attracts red
         //Rule(particlesGreen, particlesBlue, -2); //blue repels green
-        //Rule(particlesBlue, particlesRed, 1); //red attracts blue
-        Rule(particlesBlue, particlesGreen, 2); //green attracts blue
-        Rule(particlesGreen, particlesBlue, 6); //blue repels green
+        Rule(particlesBlue, particlesRed, 1); //red attracts blue
+        //Rule(particlesBlue, particlesGreen, 2); //green attracts blue
+        Rule(particlesGreen, particlesBlue, -12); //blue repels green
 
     }
 
@@ -71,7 +71,7 @@ public class ParticleInteraction : MonoBehaviour
                 Vector3 a = particle1.transform.position;
                 Vector3 b = particle2.transform.position;
                 float d = Vector3.Distance(a, b);
-                if (d > 0.8f && d < 8f)
+                if (d > 0.4f && d < 4f)
                 {
                     Vector3 forceDirection = (b - a).normalized;
                     float F = g / d;
