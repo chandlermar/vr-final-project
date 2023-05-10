@@ -3,10 +3,16 @@ using System.Collections.Generic;
 
 public class ParticleInteraction : MonoBehaviour
 {
-    //public float g;
-    private GameObject[] particlesRed;
-    private GameObject[] particlesGreen;
-    private GameObject[] particlesBlue;
+    public static ParticleInteraction inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+    
+    public GameObject[] particlesRed;
+    public GameObject[] particlesGreen;
+    public GameObject[] particlesBlue;
 
     public GameObject redParticlePrefab;
     public GameObject greenParticlePrefab;
@@ -14,19 +20,15 @@ public class ParticleInteraction : MonoBehaviour
     public Transform spawnPoint;
     public int numParticles = 10;
     public float spawnRadius = 1f;
-    public float scanRadius = 2f;
-    public float speed = 1f;
-    public float rotationSpeed = 1f;
-    public float maxForce = 1f;
 
     public float brownianStrength = 0.1f;
-    public float interactionDistance = 10f;
+    public float interactionDistance = 5f;
 
 
 
     public int redToRed = 0;
     public int redToGreen = 0;
-    public int redToBlue = (int) UIMgr.inst.slider1.value;
+    public int redToBlue = 0;
 
     public int greenToRed = 0;
     public int greenToGreen = 0;
@@ -36,13 +38,12 @@ public class ParticleInteraction : MonoBehaviour
     public int blueToGreen = 0;
     public int blueToBlue = 0;
 
-
     private void Start()
     {
         SpawnParticles();
     }
 
-    void SpawnParticles()
+    public void SpawnParticles()
     {
         particlesRed = new GameObject[numParticles/3];
         particlesGreen = new GameObject[numParticles/3];
@@ -77,6 +78,9 @@ public class ParticleInteraction : MonoBehaviour
         blueToRed = (int)UIMgr.inst.slider4.value;
         greenToRed = (int)UIMgr.inst.slider5.value;
         greenToBlue = (int)UIMgr.inst.slider6.value;
+        redToRed = (int)UIMgr.inst.slider7.value;
+        greenToGreen = (int)UIMgr.inst.slider8.value;
+        blueToBlue = (int)UIMgr.inst.slider9.value;
 
         //If changed, run appropriate rule
         if (redToGreen != 0){
@@ -110,6 +114,8 @@ public class ParticleInteraction : MonoBehaviour
             Rule(particlesBlue, particlesBlue, blueToBlue);
         }
         
+
+        
         // Rule(particlesRed, particlesGreen, 4); //green attracts red
         // //Rule(particlesGreen, particlesBlue, -2); //blue repels green
         // Rule(particlesBlue, particlesRed, 1); //red attracts blue
@@ -135,7 +141,7 @@ public class ParticleInteraction : MonoBehaviour
                 Vector3 a = particle1.transform.position;
                 Vector3 b = particle2.transform.position;
                 float d = Vector3.Distance(a, b);
-                if (d > 0.5f && d < 5f)
+                if (d > 0.5f && d < interactionDistance)
                 {
                     Vector3 forceDirection = (b - a).normalized;
                     float F = g / d;
@@ -164,6 +170,24 @@ public class ParticleInteraction : MonoBehaviour
             Rigidbody rb = particle.GetComponent<Rigidbody>();
             Vector3 randomForce = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             rb.AddForce(randomForce * brownianStrength);
+        }
+    }
+
+    void destroyParticles()
+    {
+        foreach (GameObject particle in particlesRed)
+        {
+            Destroy(particle);
+        }
+
+        foreach (GameObject particle in particlesBlue)
+        {
+            Destroy(particle);
+        }
+
+        foreach (GameObject particle in particlesGreen)
+        {
+            Destroy(particle);
         }
     }
     

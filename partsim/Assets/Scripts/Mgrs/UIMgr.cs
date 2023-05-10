@@ -13,6 +13,12 @@ public class UIMgr : MonoBehaviour
     }
 
     /*---------- Properties ----------*/
+    [Header("RESET")]
+    public Button resetButton;
+
+    [Header("SPAWN")]
+    public Button spawnButton;
+
     [Header("Red Attract Blue Slider")]
     public Slider slider1;
 
@@ -30,6 +36,15 @@ public class UIMgr : MonoBehaviour
 
     [Header("Green Attract Blue Slider")]
     public Slider slider6;
+
+    [Header("Red Attract Red Slider")]
+    public Slider slider7;
+
+    [Header("Green Attract Green Slider")]
+    public Slider slider8;
+
+    [Header("Blue Attract Blue Slider")]
+    public Slider slider9;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +77,18 @@ public class UIMgr : MonoBehaviour
         slider6.minValue = -50;
         slider6.maxValue = 50;
         slider6.value = 0;
+
+        slider7.minValue = -50;
+        slider7.maxValue = 50;
+        slider7.value = 0;
+
+        slider8.minValue = -50;
+        slider8.maxValue = 50;
+        slider8.value = 0;
+
+        slider9.minValue = -50;
+        slider9.maxValue = 50;
+        slider9.value = 0;
     }
 
     // Update is called once per frame
@@ -74,5 +101,45 @@ public class UIMgr : MonoBehaviour
         slider4.wholeNumbers = true;
         slider5.wholeNumbers = true;
         slider6.wholeNumbers = true;
+        slider7.wholeNumbers = true;
+        slider8.wholeNumbers = true;
+        slider9.wholeNumbers = true;
+    }
+
+    public void resetParticles()
+    {
+        foreach (GameObject particle in ParticleInteraction.inst.particlesRed)
+        {
+            Destroy(particle);
+        }
+
+        foreach (GameObject particle in ParticleInteraction.inst.particlesBlue)
+        {
+            Destroy(particle);
+        }
+
+        foreach (GameObject particle in ParticleInteraction.inst.particlesGreen)
+        {
+            Destroy(particle);
+        }
+
+        resetSliderValues();
+    }
+
+    void resetSliderValues()
+    {
+
+        slider1.value = 0;
+        slider2.value = 0;
+        slider3.value = 0;
+        slider4.value = 0;
+        slider5.value = 0;
+        slider6.value = 0;
+        slider7.value = 0;
+        slider8.value = 0;
+        slider9.value = 0;
+
     }
 }
+
+    
