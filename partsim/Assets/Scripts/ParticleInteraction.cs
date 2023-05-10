@@ -69,7 +69,7 @@ public class ParticleInteraction : MonoBehaviour
     }
     void Update()
     {
-        
+        /*
         if (redToGreen != 0){
             Rule(particlesRed, particlesGreen, redToGreen);
         }
@@ -100,16 +100,16 @@ public class ParticleInteraction : MonoBehaviour
         if (blueToBlue != 0){
             Rule(particlesBlue, particlesBlue, blueToBlue);
         }
-        
+        */
         // Rule(particlesRed, particlesGreen, 4); //green attracts red
         // //Rule(particlesGreen, particlesBlue, -2); //blue repels green
         // Rule(particlesBlue, particlesRed, 1); //red attracts blue
         // //Rule(particlesBlue, particlesGreen, 2); //green attracts blue
         // Rule(particlesGreen, particlesBlue, -12); //blue repels green
 
-        //AddBrownianMotion(particlesRed);
-        //AddBrownianMotion(particlesGreen);
-        //AddBrownianMotion(particlesBlue);
+        AddBrownianMotion(particlesRed);
+        AddBrownianMotion(particlesGreen);
+        AddBrownianMotion(particlesBlue);
     }
 
     void Rule(GameObject[] particles1, GameObject[] particles2, float g)
@@ -136,7 +136,7 @@ public class ParticleInteraction : MonoBehaviour
         }
     }
 
-    /*
+    
     void AddBrownianMotion(GameObject[] particles)
     {
         foreach (GameObject particle in particles)
@@ -146,6 +146,6 @@ public class ParticleInteraction : MonoBehaviour
             rb.AddForce(randomForce * brownianStrength);
         }
     }
-    */
+    
 
 }
