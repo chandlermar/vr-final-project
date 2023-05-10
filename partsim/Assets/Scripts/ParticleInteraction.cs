@@ -26,7 +26,7 @@ public class ParticleInteraction : MonoBehaviour
 
     public int redToRed = 0;
     public int redToGreen = 0;
-    public int redToBlue = 0;
+    public int redToBlue = (int) UIMgr.inst.slider1.value;
 
     public int greenToRed = 0;
     public int greenToGreen = 0;
@@ -70,7 +70,15 @@ public class ParticleInteraction : MonoBehaviour
     }
     void Update()
     {
-        /*
+        //Grab slider values on every update
+        redToBlue = (int)UIMgr.inst.slider1.value;
+        redToGreen = (int)UIMgr.inst.slider2.value;
+        blueToGreen = (int)UIMgr.inst.slider3.value;
+        blueToRed = (int)UIMgr.inst.slider4.value;
+        greenToRed = (int)UIMgr.inst.slider5.value;
+        greenToBlue = (int)UIMgr.inst.slider6.value;
+
+        //If changed, run appropriate rule
         if (redToGreen != 0){
             Rule(particlesRed, particlesGreen, redToGreen);
         }
@@ -101,7 +109,7 @@ public class ParticleInteraction : MonoBehaviour
         if (blueToBlue != 0){
             Rule(particlesBlue, particlesBlue, blueToBlue);
         }
-        */
+        
         // Rule(particlesRed, particlesGreen, 4); //green attracts red
         // //Rule(particlesGreen, particlesBlue, -2); //blue repels green
         // Rule(particlesBlue, particlesRed, 1); //red attracts blue
