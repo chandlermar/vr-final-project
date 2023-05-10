@@ -20,6 +20,7 @@ public class ParticleInteraction : MonoBehaviour
     public float maxForce = 1f;
 
     public float brownianStrength = 0.1f;
+    public float interactionDistance = 10f;
 
 
 
@@ -107,13 +108,17 @@ public class ParticleInteraction : MonoBehaviour
         // //Rule(particlesBlue, particlesGreen, 2); //green attracts blue
         // Rule(particlesGreen, particlesBlue, -12); //blue repels green
 
-        AddBrownianMotion(particlesRed);
-        AddBrownianMotion(particlesGreen);
-        AddBrownianMotion(particlesBlue);
+        //AddBrownianMotion(particlesRed);
+        //AddBrownianMotion(particlesGreen);
+        //AddBrownianMotion(particlesBlue);
+
     }
 
     void Rule(GameObject[] particles1, GameObject[] particles2, float g)
     {
+        float damping = 2f;
+        
+
         foreach (GameObject particle1 in particles1)
         {
             Vector3 netForce = Vector3.zero;
@@ -122,7 +127,7 @@ public class ParticleInteraction : MonoBehaviour
                 Vector3 a = particle1.transform.position;
                 Vector3 b = particle2.transform.position;
                 float d = Vector3.Distance(a, b);
-                if (d > 0.4f && d < 6f)
+                if (d > 0.5f && d < 5f)
                 {
                     Vector3 forceDirection = (b - a).normalized;
                     float F = g / d;
@@ -130,7 +135,14 @@ public class ParticleInteraction : MonoBehaviour
                 }
             }
             Rigidbody rb = particle1.GetComponent<Rigidbody>();
-            rb.AddForce(netForce);
+
+            rb.velocity *= (1f - damping * Time.deltaTime);
+            Vector3 angularVelocity = Vector3.Cross(rb.angularVelocity, Vector3.up);
+        
+            // Apply damping to angular velocity
+            rb.angularVelocity *= (1f - damping * Time.deltaTime);
+
+            rb.AddForce(netForce/2);
             rb.MovePosition(rb.position + rb.velocity * Time.deltaTime);
             
         }
