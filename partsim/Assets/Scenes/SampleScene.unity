@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.59937525, g: 0.5997512, b: 0.59948856, a: 1}
+  m_IndirectSpecularColor: {r: 0.5993736, g: 0.5997497, b: 0.59948695, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4061,19 +4061,19 @@ MonoBehaviour:
   blueParticlePrefab: {fileID: 4436178631309453923, guid: 3a78bf8aae80f094081d72283058a329,
     type: 3}
   spawnPoint: {fileID: 2092835590}
-  numParticles: 933
+  numParticles: 300
   spawnRadius: 6
   scanRadius: 3
   speed: 10
   rotationSpeed: 2
-  maxForce: 20
+  maxForce: 1
   brownianStrength: 10
   redToRed: 0
-  redToGreen: 6
+  redToGreen: 0
   redToBlue: 0
-  greenToRed: 0
+  greenToRed: -1
   greenToGreen: 0
-  greenToBlue: -5
+  greenToBlue: 0
   blueToRed: 0
   blueToGreen: 0
   blueToBlue: 0
