@@ -19,6 +19,9 @@ public class UIMgr : MonoBehaviour
     [Header("SPAWN")]
     public Button spawnButton;
 
+    [Header("Interaction Distance")]
+    public Slider interactionSlider;
+
     [Header("Red Attract Blue Slider")]
     public Slider slider1;
 
@@ -54,41 +57,45 @@ public class UIMgr : MonoBehaviour
         //Negative = repulse
         //Positive = attract
 
-        slider1.minValue = -50;
-        slider1.maxValue = 50;
+        slider1.minValue = -25;
+        slider1.maxValue = 25;
         slider1.value = 0;
 
-        slider2.minValue = -50;
-        slider2.maxValue = 50;
+        slider2.minValue = -25;
+        slider2.maxValue = 25;
         slider2.value = 0;
 
-        slider3.minValue = -50;
-        slider3.maxValue = 50;
+        slider3.minValue = -25;
+        slider3.maxValue = 25;
         slider3.value = 0;
 
-        slider4.minValue = -50;
-        slider4.maxValue = 50;
+        slider4.minValue = -25;
+        slider4.maxValue = 25;
         slider4.value = 0;
 
-        slider5.minValue = -50;
-        slider5.maxValue = 50;
+        slider5.minValue = -25;
+        slider5.maxValue = 25;
         slider5.value = 0;
 
-        slider6.minValue = -50;
-        slider6.maxValue = 50;
+        slider6.minValue = -25;
+        slider6.maxValue = 25;
         slider6.value = 0;
 
-        slider7.minValue = -50;
-        slider7.maxValue = 50;
+        slider7.minValue = -25;
+        slider7.maxValue = 25;
         slider7.value = 0;
 
-        slider8.minValue = -50;
-        slider8.maxValue = 50;
+        slider8.minValue = -25;
+        slider8.maxValue = 25;
         slider8.value = 0;
 
-        slider9.minValue = -50;
-        slider9.maxValue = 50;
+        slider9.minValue = -25;
+        slider9.maxValue = 25;
         slider9.value = 0;
+
+        interactionSlider.minValue = -15;
+        interactionSlider.maxValue = 15;
+        interactionSlider.value = 5;
     }
 
     // Update is called once per frame
@@ -104,6 +111,7 @@ public class UIMgr : MonoBehaviour
         slider7.wholeNumbers = true;
         slider8.wholeNumbers = true;
         slider9.wholeNumbers = true;
+        interactionSlider.wholeNumbers = true;
     }
 
     public void resetParticles()
@@ -138,6 +146,7 @@ public class UIMgr : MonoBehaviour
         slider7.value = 0;
         slider8.value = 0;
         slider9.value = 0;
+        interactionSlider.value = 5;
 
     }
 }
