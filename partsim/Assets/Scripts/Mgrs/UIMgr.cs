@@ -93,7 +93,7 @@ public class UIMgr : MonoBehaviour
         slider9.maxValue = 25;
         slider9.value = 0;
 
-        interactionSlider.minValue = -15;
+        interactionSlider.minValue = 0;
         interactionSlider.maxValue = 15;
         interactionSlider.value = 5;
     }

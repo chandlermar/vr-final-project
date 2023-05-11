@@ -6558,9 +6558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbc006c18ecf6a4b94d84da9d0a763e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetButton: {fileID: 0}
-  spawnButton: {fileID: 0}
-  interactionSlider: {fileID: 0}
+  resetButton: {fileID: 375703442}
+  spawnButton: {fileID: 2136966983}
+  interactionSlider: {fileID: 383423221}
   slider1: {fileID: 1300635923}
   slider2: {fileID: 804871797}
   slider3: {fileID: 1560339418}
@@ -6794,7 +6794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -547, y: 649}
+  m_AnchoredPosition: {x: -547, y: 456}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448956127
@@ -6819,8 +6819,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Slide the sliders to change particle interactions.\n\nUse the thumbstick
     on either \ncontroller to snap turn.\n\nUse the triggers to adjust menu sliders.\n\nUse
-    the inside paddles to teleport and grab items.\n\n\n\n\n\n\n\nCREDITS: Chandler
-    Martin and Jeffrey Carson"
+    the inside paddles on your left hand \nto teleport and grab items.\n\nNote that
+    a larger absolute value of the\ninteraction distance value can cause lag!\n\n\n\n\n\n\n\nCREDITS:
+    Chandler Martin and Jeffrey Carson"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7128,9 +7129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Particle Simulator Information
-
-'
+  m_text: "Particle Simulator Information\n Optimized for Meta Quest 2\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
