@@ -23,31 +23,31 @@ public class UIMgr : MonoBehaviour
     public Slider interactionSlider;
 
     [Header("Red Attract Blue Slider")]
-    public Slider slider1;
+    public Slider redBlue;
 
     [Header("Red Attract Green Slider")]
-    public Slider slider2;
+    public Slider redGreen;
 
     [Header("Blue Attract Green Slider")]
-    public Slider slider3;
+    public Slider blueGreen;
 
     [Header("Blue Attract Red Slider")]
-    public Slider slider4;
+    public Slider blueRed;
 
     [Header("Green Attract Red Slider")]
-    public Slider slider5;
+    public Slider greenRed;
 
     [Header("Green Attract Blue Slider")]
-    public Slider slider6;
+    public Slider greenBlue;
 
     [Header("Red Attract Red Slider")]
-    public Slider slider7;
+    public Slider redRed;
 
     [Header("Green Attract Green Slider")]
-    public Slider slider8;
+    public Slider greenGreen;
 
     [Header("Blue Attract Blue Slider")]
-    public Slider slider9;
+    public Slider blueBlue;
 
     // Start is called before the first frame update
     void Start()
@@ -57,41 +57,41 @@ public class UIMgr : MonoBehaviour
         //Negative = repulse
         //Positive = attract
 
-        slider1.minValue = -25;
-        slider1.maxValue = 25;
-        slider1.value = 0;
+        redBlue.minValue = -25;
+        redBlue.maxValue = 25;
+        redBlue.value = 0;
 
-        slider2.minValue = -25;
-        slider2.maxValue = 25;
-        slider2.value = 0;
+        redGreen.minValue = -25;
+        redGreen.maxValue = 25;
+        redGreen.value = 0;
 
-        slider3.minValue = -25;
-        slider3.maxValue = 25;
-        slider3.value = 0;
+        blueGreen.minValue = -25;
+        blueGreen.maxValue = 25;
+        blueGreen.value = 0;
 
-        slider4.minValue = -25;
-        slider4.maxValue = 25;
-        slider4.value = 0;
+        blueRed.minValue = -25;
+        blueRed.maxValue = 25;
+        blueRed.value = 0;
 
-        slider5.minValue = -25;
-        slider5.maxValue = 25;
-        slider5.value = 0;
+        greenRed.minValue = -25;
+        greenRed.maxValue = 25;
+        greenRed.value = 0;
 
-        slider6.minValue = -25;
-        slider6.maxValue = 25;
-        slider6.value = 0;
+        greenBlue.minValue = -25;
+        greenBlue.maxValue = 25;
+        greenBlue.value = 0;
 
-        slider7.minValue = -25;
-        slider7.maxValue = 25;
-        slider7.value = 0;
+        redRed.minValue = -25;
+        redRed.maxValue = 25;
+        redRed.value = 0;
 
-        slider8.minValue = -25;
-        slider8.maxValue = 25;
-        slider8.value = 0;
+        greenGreen.minValue = -25;
+        greenGreen.maxValue = 25;
+        greenGreen.value = 0;
 
-        slider9.minValue = -25;
-        slider9.maxValue = 25;
-        slider9.value = 0;
+        blueBlue.minValue = -25;
+        blueBlue.maxValue = 25;
+        blueBlue.value = 0;
 
         interactionSlider.minValue = 0;
         interactionSlider.maxValue = 15;
@@ -102,15 +102,15 @@ public class UIMgr : MonoBehaviour
     void Update()
     {
         //Forces sliders to snap to whole values
-        slider1.wholeNumbers = true;
-        slider2.wholeNumbers = true;
-        slider3.wholeNumbers = true;
-        slider4.wholeNumbers = true;
-        slider5.wholeNumbers = true;
-        slider6.wholeNumbers = true;
-        slider7.wholeNumbers = true;
-        slider8.wholeNumbers = true;
-        slider9.wholeNumbers = true;
+        redBlue.wholeNumbers = true;
+        redGreen.wholeNumbers = true;
+        blueGreen.wholeNumbers = true;
+        blueRed.wholeNumbers = true;
+        greenRed.wholeNumbers = true;
+        greenBlue.wholeNumbers = true;
+        redRed.wholeNumbers = true;
+        greenGreen.wholeNumbers = true;
+        blueBlue.wholeNumbers = true;
         interactionSlider.wholeNumbers = true;
     }
 
@@ -137,15 +137,15 @@ public class UIMgr : MonoBehaviour
     void resetSliderValues()
     {
 
-        slider1.value = 0;
-        slider2.value = 0;
-        slider3.value = 0;
-        slider4.value = 0;
-        slider5.value = 0;
-        slider6.value = 0;
-        slider7.value = 0;
-        slider8.value = 0;
-        slider9.value = 0;
+        redBlue.value = 0;
+        redGreen.value = 0;
+        blueGreen.value = 0;
+        blueRed.value = 0;
+        greenRed.value = 0;
+        greenBlue.value = 0;
+        redRed.value = 0;
+        greenGreen.value = 0;
+        blueBlue.value = 0;
         interactionSlider.value = 5;
 
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+// using Random = System.Random;
 
 public class ParticleInteraction : MonoBehaviour
 {
@@ -74,15 +75,15 @@ public class ParticleInteraction : MonoBehaviour
     void Update()
     {
         //Grab slider values on every update
-        redToBlue = (int)UIMgr.inst.slider1.value;
-        redToGreen = (int)UIMgr.inst.slider2.value;
-        blueToGreen = (int)UIMgr.inst.slider3.value;
-        blueToRed = (int)UIMgr.inst.slider4.value;
-        greenToRed = (int)UIMgr.inst.slider5.value;
-        greenToBlue = (int)UIMgr.inst.slider6.value;
-        redToRed = (int)UIMgr.inst.slider7.value;
-        greenToGreen = (int)UIMgr.inst.slider8.value;
-        blueToBlue = (int)UIMgr.inst.slider9.value;
+        redToBlue = (int)UIMgr.inst.redBlue.value;
+        redToGreen = (int)UIMgr.inst.redGreen.value;
+        blueToGreen = (int)UIMgr.inst.blueGreen.value;
+        blueToRed = (int)UIMgr.inst.blueRed.value;
+        greenToRed = (int)UIMgr.inst.greenRed.value;
+        greenToBlue = (int)UIMgr.inst.greenBlue.value;
+        redToRed = (int)UIMgr.inst.redRed.value;
+        greenToGreen = (int)UIMgr.inst.greenGreen.value;
+        blueToBlue = (int)UIMgr.inst.blueBlue.value;
 
         //If changed, run appropriate rule
         if (redToGreen != 0){
@@ -195,7 +196,15 @@ public class ParticleInteraction : MonoBehaviour
 
     public void Randomize()
     {
-
+        UIMgr.inst.redRed.value = Random.Range(-25, 26);
+        UIMgr.inst.redGreen.value = Random.Range(-25, 26);
+        UIMgr.inst.redBlue.value = Random.Range(-25, 26);
+        UIMgr.inst.greenRed.value = Random.Range(-25, 26);
+        UIMgr.inst.greenGreen.value = Random.Range(-25, 26);
+        UIMgr.inst.greenBlue.value = Random.Range(-25, 26);
+        UIMgr.inst.blueRed.value = Random.Range(-25, 26);
+        UIMgr.inst.blueGreen.value = Random.Range(-25, 26);
+        UIMgr.inst.blueBlue.value = Random.Range(-25, 26);
     }
     
 
