@@ -10,6 +10,9 @@ public class ParticleInteraction : MonoBehaviour
     {
         inst = this;
     }
+
+    //0=not spawned, 1 = spawned
+    private int hasSpawnedFlag = 0;
     
     public GameObject[] particlesRed;
     public GameObject[] particlesGreen;
@@ -48,28 +51,32 @@ public class ParticleInteraction : MonoBehaviour
 
     public void SpawnParticles()
     {
-        particlesRed = new GameObject[numParticles/3];
-        particlesGreen = new GameObject[numParticles/3];
-        particlesBlue = new GameObject[numParticles / 3];
-        GameObject particlePrefab;
+        // if particles arent spawned, spawn them
+        if (hasSpawnedFlag == 0){
+            particlesRed = new GameObject[numParticles/3];
+            particlesGreen = new GameObject[numParticles/3];
+            particlesBlue = new GameObject[numParticles / 3];
+            GameObject particlePrefab;
 
-        for (int i = 0; i < numParticles / 3; i++)
-        {
-            particlePrefab = redParticlePrefab;
-            Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
-            particlesRed[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
-        }
-        for (int i = 0; i < numParticles / 3; i++)
-        {
-            particlePrefab = greenParticlePrefab;
-            Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
-            particlesGreen[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
-        }
-        for (int i = 0; i < numParticles / 3; i++)
-        {
-            particlePrefab = blueParticlePrefab;
-            Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
-            particlesBlue[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            for (int i = 0; i < numParticles / 3; i++)
+            {
+                particlePrefab = redParticlePrefab;
+                Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
+                particlesRed[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            }
+            for (int i = 0; i < numParticles / 3; i++)
+            {
+                particlePrefab = greenParticlePrefab;
+                Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
+                particlesGreen[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            }
+            for (int i = 0; i < numParticles / 3; i++)
+            {
+                particlePrefab = blueParticlePrefab;
+                Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
+                particlesBlue[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            }
+            hasSpawnedFlag =1;
         }
     }
     void Update()
@@ -107,7 +114,6 @@ public class ParticleInteraction : MonoBehaviour
         }
 
         if (blueToRed != 0){
-            
             Rule(particlesBlue, particlesRed, blueToRed);
         }
         if (blueToGreen != 0){
@@ -116,9 +122,7 @@ public class ParticleInteraction : MonoBehaviour
         if (blueToBlue != 0){
             Rule(particlesBlue, particlesBlue, blueToBlue);
         }
-        
-
-        
+                
         // Rule(particlesRed, particlesGreen, 4); //green attracts red
         // //Rule(particlesGreen, particlesBlue, -2); //blue repels green
         // Rule(particlesBlue, particlesRed, 1); //red attracts blue
@@ -192,6 +196,7 @@ public class ParticleInteraction : MonoBehaviour
         {
             Destroy(particle);
         }
+        hasSpawnedFlag = 0; //particles are despawned.
     }
 
     public void Randomize()
