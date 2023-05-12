@@ -1,10 +1,12 @@
-
-
 Particle Life Simulator 
 Made For CS484 Virtual Reality at the University of Nevada, Reno.
 Instructors: Paul MacNeilage, Eelke Folmer
 
+**Note: particle-sim-demo-lite.apk spawns 210 particles which is optimal for running the program natively on Meta Quest 2. 
+	  If you are using a link cable to run the program through a PC, particle-sim-demo.apk uses 663 particles which shows more interactions.
+
 Created by: Chandler Martin, Jeffrey Carson, Jashawn Taylor, Jewel Gomez
+Group 15
 
 
 Requirements: Works best on Meta Quest 2
@@ -13,21 +15,8 @@ Requirements: Works best on Meta Quest 2
 Controls (Headset):
 
 - Trigger finger on either controller to interact with the sliders.
-
-
-
-
-Known Bugs:
-
-- 
-
-
-
-
-
-
-
-
+- Inside paddle on left controller to teleport and grab items.
+- Thumbstick on either controller to snap turn.
 
 
 Motivation

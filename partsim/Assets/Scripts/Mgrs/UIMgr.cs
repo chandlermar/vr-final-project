@@ -12,6 +12,9 @@ public class UIMgr : MonoBehaviour
         inst = this;
     }
 
+    //0=not spawned, 1 = spawned
+    public int hasSpawnedFlag = 0;
+
     /*---------- Properties ----------*/
     [Header("RESET")]
     public Button resetButton;
@@ -132,6 +135,7 @@ public class UIMgr : MonoBehaviour
         }
 
         resetSliderValues();
+        hasSpawnedFlag = 0; //particles are despawned.
     }
 
     void resetSliderValues()

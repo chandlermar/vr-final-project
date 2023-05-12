@@ -7464,6 +7464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbc006c18ecf6a4b94d84da9d0a763e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasSpawnedFlag: 0
   resetButton: {fileID: 375703442}
   spawnButton: {fileID: 2136966983}
   interactionSlider: {fileID: 383423221}
@@ -11511,7 +11512,7 @@ MonoBehaviour:
   blueParticlePrefab: {fileID: 4436178631309453923, guid: 3a78bf8aae80f094081d72283058a329,
     type: 3}
   spawnPoint: {fileID: 2092835590}
-  numParticles: 666
+  numParticles: 210
   spawnRadius: 6
   brownianStrength: 10
   interactionDistance: 5

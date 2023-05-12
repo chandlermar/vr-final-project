@@ -10,9 +10,6 @@ public class ParticleInteraction : MonoBehaviour
     {
         inst = this;
     }
-
-    //0=not spawned, 1 = spawned
-    private int hasSpawnedFlag = 0;
     
     public GameObject[] particlesRed;
     public GameObject[] particlesGreen;
@@ -45,14 +42,12 @@ public class ParticleInteraction : MonoBehaviour
     private void Start()
     {
         SpawnParticles();
-
-        Randomize();
     }
 
     public void SpawnParticles()
     {
         // if particles arent spawned, spawn them
-        if (hasSpawnedFlag == 0){
+        if (UIMgr.inst.hasSpawnedFlag == 0){
             particlesRed = new GameObject[numParticles/3];
             particlesGreen = new GameObject[numParticles/3];
             particlesBlue = new GameObject[numParticles / 3];
@@ -76,7 +71,7 @@ public class ParticleInteraction : MonoBehaviour
                 Vector3 spawnPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
                 particlesBlue[i] = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
             }
-            hasSpawnedFlag =1;
+            UIMgr.inst.hasSpawnedFlag =1;
         }
     }
     void Update()
@@ -196,7 +191,6 @@ public class ParticleInteraction : MonoBehaviour
         {
             Destroy(particle);
         }
-        hasSpawnedFlag = 0; //particles are despawned.
     }
 
     public void Randomize()
