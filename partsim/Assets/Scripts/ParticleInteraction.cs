@@ -41,6 +41,8 @@ public class ParticleInteraction : MonoBehaviour
     private void Start()
     {
         SpawnParticles();
+
+        Randomize();
     }
 
     public void SpawnParticles()
@@ -189,6 +191,11 @@ public class ParticleInteraction : MonoBehaviour
         {
             Destroy(particle);
         }
+    }
+
+    public void Randomize()
+    {
+
     }
     
 
